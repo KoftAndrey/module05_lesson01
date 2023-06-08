@@ -4,11 +4,8 @@
 
 const items = document.querySelector('.items');
 const itemOne = document.querySelector('.item_one');
-const itemTwo = document.querySelector('.item_two');
 const itemThree = document.querySelector('.item_three');
 const itemFour = document.querySelector('.item_four');
-const itemFive = document.querySelector('.item_five');
-const itemSix = document.querySelector('.item_six');
 const spam = document.querySelector('.ads');
 
 spam.remove();
