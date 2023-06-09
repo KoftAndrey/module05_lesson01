@@ -1,59 +1,32 @@
 'use strict';
 
-// Блоки
-
-const items = document.querySelector('.items');
-const itemOne = document.querySelector('.item_one');
-const itemThree = document.querySelector('.item_three');
-const itemFour = document.querySelector('.item_four');
-const spam = document.querySelector('.ads');
-
-spam.remove();
-items.prepend(itemOne);
-itemThree.after(itemFour);
-
-
-// Подзаголовки
-
+const items = document.querySelectorAll('.item');
+const itemsContent = document.querySelectorAll('.item .content');
+const itemLists = document.querySelectorAll('.item ol');
 const subtitles = document.querySelectorAll('h2');
-const titleTwo = subtitles[4].cloneNode(true);
-const titleFive = subtitles[5].cloneNode(true);
-const titleSix = subtitles[1].cloneNode(true);
-
-subtitles[1].replaceWith(titleTwo);
-subtitles[4].replaceWith(titleFive);
-subtitles[5].replaceWith(titleSix);
-
-subtitles[2].innerHTML =
-'<h2 class="item__title">This и прототипы объектов</h2>';
-
-
-// Списки
-
 const itemTwoListItem =
 document.querySelector('.item_two .props__item:nth-child(4)');
-
 const itemFourListItem =
 document.querySelector('.item_four .props__item:nth-child(3)');
-
-itemFourListItem.after(itemTwoListItem);
-
-
 const itemTwoAppendix =
 document.querySelectorAll('.item_six .props__item_two');
+const spam = document.querySelector('.ads');
 
-const itemTwoList = document.querySelector('.item_two .props__list');
+// Удаление спама
+spam.remove();
 
-itemTwoList.append(...itemTwoAppendix);
+// Восстановление порядка карточек
+items[4].before(items[0]);
 
+// Восстановление подзаголовков
+itemLists[2].before(subtitles[4]);
+itemLists[4].before(subtitles[5]);
+itemLists[5].before(subtitles[2]);
+subtitles[3].innerHTML =
+'<h2 class="item__title">This и прототипы объектов</h2>';
 
-const itemThreeListFalse = document.querySelector('.item_three .props__list');
-const itemThreeListTrue =
-document.querySelector('.item_five .props__list').cloneNode(true);
-
-const itemFiveListFalse = document.querySelector('.item_five .props__list');
-const itemFiveListTrue =
-document.querySelector('.item_three .props__list').cloneNode(true);
-
-itemThreeListFalse.replaceWith(itemThreeListTrue);
-itemFiveListFalse.replaceWith(itemFiveListTrue);
+// Восстановление списков
+itemFourListItem.after(itemTwoListItem);
+itemLists[2].append(...itemTwoAppendix);
+itemsContent[3].append(itemLists[4]);
+itemsContent[4].append(itemLists[3]);
